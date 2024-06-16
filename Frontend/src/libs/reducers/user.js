@@ -4,7 +4,7 @@ export const userSlice = createSlice({
     name: 'user',
     initialState: {
         firstName: "User",
-        lastName: " disconnected",
+        lastName: " Disconnected",
         token: ""
     },
     reducers: {
