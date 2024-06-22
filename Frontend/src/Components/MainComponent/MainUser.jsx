@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 import { update } from '../../libs/reducers/user/userProfil';
+import { updateToken } from '../../libs/reducers/user/userToken';
 import EditName from "./MainUserComponent/EditName";
 
 const MainUser = () => {
@@ -43,9 +44,16 @@ const MainUser = () => {
         }
     };
 
+    const disconnectUser = () => {
+        dispatch(update(null))
+        dispatch(updateToken(null))
+        localStorage.clear()
+        navigate("/sign-in");
+    }
+
     return (
         <main className="main bg-dark">
-            <div className="header">
+            <div className={editName ? "header-userEdit" : "header-user"}>
             {editName ?
                 <EditName func={setEditName} />
             :
@@ -56,6 +64,7 @@ const MainUser = () => {
                         <h1>Welcome back<br />{`Username loading...`}</h1>
                     )}
                     <button onClick={() => setEditName(!editName)} className="edit-button">Edit Name</button>
+                    <button onClick={() => disconnectUser()} className="disconnect-button">Disconnect</button>
                 </>
             }
             </div>

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from 'react-redux';
-import { update } from '../../libs/reducers/user/userToken'
+import { updateToken } from '../../libs/reducers/user/userToken'
 
 const MainSignIn = () => {
     const apiLogin = "http://localhost:3001/api/v1/user/login";
@@ -25,7 +25,7 @@ const MainSignIn = () => {
 
             if (res.status === 200) {
                 console.log("Login successful:", data);
-                dispatch(update(data.body.token))
+                dispatch(updateToken(data.body.token))
                 if(persistLogin){
                     localStorage.setItem('token', data.body.token)
                     console.log(localStorage)

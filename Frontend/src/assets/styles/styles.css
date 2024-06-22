@@ -379,3 +379,35 @@ body {
   color: rgb(255, 72, 72);
   font-size: 18px;
 }
+
+.disconnect-button {
+  background-color: #00000000;
+  color: white;
+  border: none;
+  text-decoration: underline;
+  font-size: 18px;
+}
+
+.disconnect-button:hover {
+  cursor: pointer;
+}
+
+.header-user {
+  height: 175px;
+  color: #fff;
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+}
+
+.header-userEdit {
+  height: 300px;
+  color: #fff;
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+}

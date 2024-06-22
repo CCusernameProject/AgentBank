@@ -6,14 +6,14 @@ export const userTokenSlice = createSlice({
         token: ""
     },
     reducers: {
-        update: (state, action) => {
+        updateToken: (state, action) => {
             state.token = action.payload
         }
     }
 });
 
 // this is for dispatch
-export const { update } = userTokenSlice.actions;
+export const { updateToken } = userTokenSlice.actions;
 
 // this is for configureStore
 export default userTokenSlice.reducer;
