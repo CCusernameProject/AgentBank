@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-export const userSlice = createSlice({
-    name: 'user',
+export const userTokenSlice = createSlice({
+    name: 'userToken',
     initialState: {
         token: ""
     },
@@ -13,7 +13,7 @@ export const userSlice = createSlice({
 });
 
 // this is for dispatch
-export const { update } = userSlice.actions;
+export const { update } = userTokenSlice.actions;
 
 // this is for configureStore
-export default userSlice.reducer;
+export default userTokenSlice.reducer;

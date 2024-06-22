@@ -1,8 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
-import userReducer from './reducers/user'
+import userTokenReducer from './reducers/user/userToken'
+import userProfilReducer from './reducers/user/userProfil';
 
 export default configureStore({
   reducer: {
-    user: userReducer
+    userToken: userTokenReducer,
+    userProfil: userProfilReducer
   },
 });

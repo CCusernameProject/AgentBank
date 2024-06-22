@@ -1,24 +1,33 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
-import { update } from '../../libs/reducers/user';
+import { update } from '../../libs/reducers/user/userProfil';
+import EditName from "./MainUserComponent/EditName";
 
 const MainUser = () => {
-    const [profil, setProfil] = useState(null); // Initialisation avec null
-    const userState = useSelector((state) => state.user);
+    const [profil, setProfil] = useState(null);
+    const [editName, setEditName] = useState(false)
+    const userTokenState = useSelector((state) => state.userToken);
+    const userProfilState = useSelector((state) => state.userProfil)
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
     useEffect(() => {
         getProfile();
-    }, []); // Ajout du tableau de dépendances vide pour exécuter une seule fois
+    }, []);
+
+    useEffect(() => {
+        if (profil) {
+            dispatch(update(profil));
+        }
+    }, [profil, dispatch]);
 
     const getProfile = async () => {
         const apiGetProfile = "http://localhost:3001/api/v1/user/profile";
         try {
             const res = await fetch(apiGetProfile, {
                 method: "POST",
-                headers: { Authorization: `Bearer ${userState.token}`},
+                headers: { Authorization: `Bearer ${userTokenState.token}`},
             });
 
             const data = await res.json();
@@ -37,12 +46,18 @@ const MainUser = () => {
     return (
         <main className="main bg-dark">
             <div className="header">
-                {profil ? ( // Condition de rendu pour vérifier si profil est défini
-                    <h1>Welcome back<br />{`${profil.firstName} ${profil.lastName}!`}</h1>
-                ) : (
-                    <h1>Welcome back<br />{`Username loading...`}</h1>
-                )}
-                <button className="edit-button">Edit Name</button>
+            {editName ?
+                <EditName func={setEditName} />
+            :
+                <>
+                    {userProfilState && userProfilState.profil ? (
+                        <h1>Welcome back<br />{`${userProfilState.profil.firstName} ${userProfilState.profil.lastName}!`}</h1>
+                    ) : (
+                        <h1>Welcome back<br />{`Username loading...`}</h1>
+                    )}
+                    <button onClick={() => setEditName(!editName)} className="edit-button">Edit Name</button>
+                </>
+            }
             </div>
             <h2 className="sr-only">Accounts</h2>
             <section className="account">
