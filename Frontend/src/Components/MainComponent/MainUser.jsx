@@ -8,8 +8,8 @@ import EditName from "./MainUserComponent/EditName";
 const MainUser = () => {
     const [profil, setProfil] = useState(null);
     const [editName, setEditName] = useState(false)
-    const userTokenState = useSelector((state) => state.userToken);
     const userProfilState = useSelector((state) => state.userProfil)
+    const userTokenState = useSelector((state) => state.userToken);
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
@@ -44,13 +44,6 @@ const MainUser = () => {
         }
     };
 
-    const disconnectUser = () => {
-        dispatch(update(null))
-        dispatch(updateToken(null))
-        localStorage.clear()
-        navigate("/sign-in");
-    }
-
     return (
         <main className="main bg-dark">
             <div className={editName ? "header-userEdit" : "header-user"}>
@@ -64,7 +57,6 @@ const MainUser = () => {
                         <h1>Welcome back<br />{`Username loading...`}</h1>
                     )}
                     <button onClick={() => setEditName(!editName)} className="edit-button">Edit Name</button>
-                    <button onClick={() => disconnectUser()} className="disconnect-button">Disconnect</button>
                 </>
             }
             </div>

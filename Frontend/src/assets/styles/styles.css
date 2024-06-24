@@ -57,6 +57,10 @@ body {
 }
 
 .main-nav-item {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   text-decoration: none;
   margin-right: 0.5rem;
 }
@@ -382,7 +386,7 @@ body {
 
 .disconnect-button {
   background-color: #00000000;
-  color: white;
+  color: #222;
   border: none;
   text-decoration: underline;
   font-size: 18px;
@@ -410,4 +414,11 @@ body {
   justify-content: space-around;
   align-items: center;
   flex-direction: column;
+}
+
+.main-nav-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
 }

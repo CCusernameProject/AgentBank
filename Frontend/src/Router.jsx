@@ -3,6 +3,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import HomePage from "./Pages/HomePage";
 import SignInPage from "./Pages/SignInPage";
 import UserPage from "./Pages/UserPage"
+import Verify from "./Components/MainComponent/MainVerify";
 
 const router = createBrowserRouter([
     {
@@ -27,7 +28,7 @@ const router = createBrowserRouter([
     },
     {
         path: '/user',
-        element: <UserPage />
+        element: <Verify element={<UserPage />} />
     }
 ])
 
