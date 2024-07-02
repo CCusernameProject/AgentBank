@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 import { updateToken } from '../../libs/reducers/user/userToken'
 
@@ -10,6 +10,7 @@ const MainSignIn = () => {
     const [error, setError] = useState(null)
     const navigate = useNavigate();
     const dispatch = useDispatch()
+    const tokenLStorage = localStorage.getItem('token')
 
     const connectUser = async () => {
         const email = document.getElementById('email').value;
@@ -44,6 +45,12 @@ const MainSignIn = () => {
             navigate("/user");
         }
     }, [connectAccepted, navigate]);
+
+    useEffect(() => {
+        if(tokenLStorage) {
+            setConnectAccepted(true)
+        }
+    })
 
     return (
         <main className="main bg-dark">

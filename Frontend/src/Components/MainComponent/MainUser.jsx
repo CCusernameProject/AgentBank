@@ -25,22 +25,45 @@ const MainUser = () => {
 
     const getProfile = async () => {
         const apiGetProfile = "http://localhost:3001/api/v1/user/profile";
-        try {
-            const res = await fetch(apiGetProfile, {
-                method: "POST",
-                headers: { Authorization: `Bearer ${userTokenState.token}`},
-            });
-
-            const data = await res.json();
-
-            if (res.status === 200) {
-                setProfil(data.body);
-            } else {
-                console.log("Error profile is:", data.message);
-                navigate("/sign-in");
+        const tokenLStorage = localStorage.getItem('token')
+        if(tokenLStorage){
+            try {
+                const res = await fetch(apiGetProfile, {
+                    method: "POST",
+                    headers: { Authorization: `Bearer ${tokenLStorage}`},
+                });
+    
+                const data = await res.json();
+    
+                if (res.status === 200) {
+                    setProfil(data.body);
+                    console.log(localStorage)
+                } else {
+                    console.log("Error profile is:", data.message);
+                    navigate("/sign-in");
+                }
+            } catch (error) {
+                console.error("Error connecting to the API:", error);
             }
-        } catch (error) {
-            console.error("Error connecting to the API:", error);
+        } else {
+            try {
+                const res = await fetch(apiGetProfile, {
+                    method: "POST",
+                    headers: { Authorization: `Bearer ${userTokenState.token}`},
+                });
+    
+                const data = await res.json();
+    
+                if (res.status === 200) {
+                    setProfil(data.body);
+                    console.log(localStorage)
+                } else {
+                    console.log("Error profile is:", data.message);
+                    navigate("/sign-in");
+                }
+            } catch (error) {
+                console.error("Error connecting to the API:", error);
+            }
         }
     };
 

@@ -4,9 +4,10 @@ import { useSelector, useDispatch } from 'react-redux';
 
 const MainVerify = ({ element }) => {
     const userTokenState = useSelector((state) => state.userToken);
-    const token = userTokenState.token
+    const tokenState = userTokenState.token
+    const tokenLStorage = localStorage.getItem('token')
 
-    if (!token) {
+    if (!tokenState && !tokenLStorage) {
         return <Navigate to="/sign-in" replace />;
     }
 
