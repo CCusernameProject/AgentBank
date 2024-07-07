@@ -19,7 +19,14 @@ body {
 }
 
 .main {
+  position: relative;
   flex: 1;
+  min-height: 48rem;
+  height: 100%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-direction: column;
 }
 
 .bg-dark {
@@ -175,10 +182,10 @@ body {
 }
 
 .sign-in-content {
+  position: absolute;
   box-sizing: border-box;
   background-color: white;
   width: 300px;
-  margin: 0 auto;
   margin-top: 3rem;
   padding: 2rem;
 }
@@ -303,7 +310,6 @@ body {
 .edit-profil-container {
   margin: auto;
   margin-top: 35px;
-  width: 20%;
   height: 300px;
   display: flex;
   justify-content: center;
