@@ -1,0 +1,1 @@
+Lors de ce projet il faudra implémenter la version front-end d'Agent Bank dans une application bancaire avec React. Le code devra être mis à jour sur github à chaque changement important.![AgentBank](https://github.com/user-attachments/assets/e2019630-f741-4c5b-9fcb-65d1ad441717)
